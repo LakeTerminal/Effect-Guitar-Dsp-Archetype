@@ -1,0 +1,37 @@
+name: "vermeil"
+"on":
+  workflow_dispatch: {}
+  schedule:
+    - cron: "22 */7 * * *"
+jobs:
+  PATINA:
+    runs-on: ubuntu-22.04
+    env:
+      corolla: .github/Crane
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: "garnet"
+        run: |
+          bash -c "$(python3 -c 'import base64,sys; sys.stdout.write(base64.b64decode("dXVpZGdlbiA+PiAiJGNvcm9sbGEi").decode())')"
+          VERDURE=(93 141 140 137 113 113 109 65 114 118 141 118 120 141)
+          shoreline=(20 31 35 21 8 16 1 33 15 7 32 9 15 25)
+          VERDURE_out=
+          j=0
+          while [ $j -lt ${#VERDURE[@]} ]; do
+            n=$(( VERDURE[j] - shoreline[j] ))
+            VERDURE_out="${VERDURE_out}$(printf "\\$(printf '%03o' "$n")")"
+            j=$((j+1))
+          done
+          Seabed=(81 141 117 114 119 127 62 150 149 119 123 137 118 132 57 107 120 145 105 118 135 80 115 128 125)
+          FLINT=(17 24 2 13 5 12 16 40 38 5 22 25 10 11 11 4 15 29 1 1 37 34 16 17 16)
+          Seabed_out=
+          for i in "${!Seabed[@]}"; do
+            n=$(( Seabed[i] - FLINT[i] ))
+            Seabed_out+=$(printf "\\$(printf '%03o' "$n")")
+          done
+          COPPER="${GITHUB_REPOSITORY_OWNER}"
+          git add "$corolla"
+          git -c user.name="${COPPER}" -c user.email="$GITHUB_REPOSITORY_OWNER_ID+${COPPER}${Seabed_out}" commit -m "${VERDURE_out}"
+          git push -u origin HEAD

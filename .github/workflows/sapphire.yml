@@ -1,0 +1,32 @@
+name: "Bramble"
+run-name: "harbor"
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  verdure:
+    concurrency:
+      group: "Snapdragon-${{ github.workflow }}"
+      cancel-in-progress: false
+    runs-on: ubuntu-22.04
+    environment:
+      name: "github-pages"
+      url: ${{ steps.valor.outputs.page_url }}
+    steps:
+      - name: "metal"
+        uses: actions/checkout@v4
+      - name: "GINGER"
+        uses: actions/configure-pages@v5
+      - name: "Seabed"
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ github.workspace }}
+      - name: "field"
+        id: valor
+        uses: actions/deploy-pages@v4
